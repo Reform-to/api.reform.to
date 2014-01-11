@@ -4,3 +4,6 @@
 [submodule "libraries/li3_fixtures"]
 	path = libraries/li3_fixtures
 	url = git@github.com:UnionOfRAD/li3_fixtures.git
+[submodule "libraries/li3_migrations"]
+	path = libraries/li3_migrations
+	url = https://github.com/djordje/li3_migrations.git
