@@ -11,30 +11,17 @@
 <head>
 	<?php echo $this->html->charset();?>
 	<title>Application &gt; <?php echo $this->title(); ?></title>
-	<?php echo $this->html->style(array('bootstrap.min', 'lithified')); ?>
+	<?php echo $this->html->style(array('bootstrap.min', 'lithified', 'reformed')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
+	<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800|Open+Sans:300' rel='stylesheet' type='text/css'>
 </head>
+
 <body class="lithified">
 	<div class="container-narrow">
 
 		<div class="masthead">
-			<ul class="nav nav-pills pull-right">
-				<li>
-					<a href="http://li3.me/docs/manual/quickstart">Quickstart</a>
-				</li>
-				<li>
-					<a href="http://li3.me/docs/manual">Manual</a>
-				</li>
-				<li>
-					<a href="http://li3.me/docs/lithium">API</a>
-				</li>
-				<li>
-					<a href="http://li3.me/">More</a>
-				</li>
-			</ul>
-			<a href="http://li3.me/"><h3>&#10177;</h3></a>
 		</div>
 
 		<hr>
@@ -46,7 +33,6 @@
 		<hr>
 
 		<div class="footer">
-			<p>&copy; Union Of RAD 2013</p>
 		</div>
 
 	</div>

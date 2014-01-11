@@ -32,11 +32,16 @@
 require __DIR__ . '/bootstrap/libraries.php';
 
 /**
+ * The environments file checks and sets the environment we should be running in
+ */
+require __DIR__ . '/bootstrap/environments.php';
+
+/**
  * The error configuration allows you to use the filter system along with the advanced matching
  * rules of the `ErrorHandler` class to provide a high level of control over managing exceptions in
  * your application, with no impact on framework or application code.
  */
-// require __DIR__ . '/bootstrap/errors.php';
+require __DIR__ . '/bootstrap/errors.php';
 
 /**
  * This file defines bindings between classes which are triggered during the request cycle, and
@@ -73,7 +78,7 @@ require __DIR__ . '/bootstrap/connections.php';
  * This file contains configurations for handling different content types within the framework,
  * including converting data to and from different formats, and handling static media assets.
  */
-// require __DIR__ . '/bootstrap/media.php';
+require __DIR__ . '/bootstrap/media.php';
 
 /**
  * This file configures console filters and settings, specifically output behavior and coloring.

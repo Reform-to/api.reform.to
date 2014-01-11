@@ -20,6 +20,11 @@
 use lithium\core\Libraries;
 use lithium\core\Environment;
 use lithium\action\Dispatcher;
+use lithium\analysis\Logger;
+
+Logger::config(array(
+	'default' => array('adapter' => 'File')
+));
 
 /**
  * This filter intercepts the `run()` method of the `Dispatcher`, and first passes the `'request'`

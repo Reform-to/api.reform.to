@@ -16,13 +16,23 @@ ErrorHandler::apply('lithium\action\Dispatcher::run', array(), function($info, $
 		'status' => $info['exception']->getCode()
 	));
 
-	Media::render($response, compact('info', 'params'), array(
-		'library' => true,
-		'controller' => '_errors',
-		'template' => 'development',
-		'layout' => 'error',
-		'request' => $params['request']
-	));
+    if ($info['exception']->getCode() === 404) {
+        Media::render($response, compact('info', 'params'), array(
+            'library' => true,
+            'controller' => '_errors',
+            'template' => '404',
+            'layout' => 'default',
+            'request' => $params['request']
+        ));
+    } else {
+        Media::render($response, compact('info', 'params'), array(
+            'library' => true,
+            'controller' => '_errors',
+            'template' => 'development',
+            'layout' => 'error',
+            'request' => $params['request']
+        ));
+    }
 	return $response;
 });
 
