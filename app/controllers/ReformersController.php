@@ -12,7 +12,37 @@ class ReformersController extends \lithium\action\Controller {
 	}
 
     public function index() {
-        $reformers = array();
+
+        $pledgers = Pledgers::find('all', array(
+            'with' => array(
+                'Pledges',
+                'Verifications'
+            ),
+            'conditions' => array(
+                'Verifications.is_verified' => true
+            )
+        ));
+
+        $reformers = $pledgers->map(function($pledger) {
+            $reforms = $pledger->pledges->map(function($pledge) {
+                return (int) $pledge->reform_id;
+            });
+
+            $pledges = $pledger->pledges;
+            $reforms = array();
+            foreach ($pledges as $pledge) {
+                array_push($reforms, $pledge->reform_id);
+            }
+
+            $reformer = array(
+                'bioguide_id' => $pledger->bioguide_id,
+                'fec_id' => $pledger->fec_id,
+                'reforms' => $reforms
+            );
+
+            return $reformer;
+        });
+
         return compact('reformers');
     }
 

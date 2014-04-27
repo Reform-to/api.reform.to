@@ -37,6 +37,27 @@ class ReformersControllerTest extends \lithium\test\Unit {
 
         $result = $controller->index();
         $this->assertTrue(array_key_exists('reformers', $result));
+
+        $reformers = $result['reformers'];
+
+        // From the fixtures, there is only one pledger who is a verified reformer
+        $this->assertEqual(1, sizeof($reformers));
+
+        $reformer = $reformers->first();
+
+        $this->assertTrue(array_key_exists('bioguide_id', $reformer));
+        $this->assertTrue(array_key_exists('fec_id', $reformer));
+        $this->assertTrue(array_key_exists('reforms', $reformer));
+
+        $this->assertEqual(2, sizeof($reformer['reforms']));
+
+        $reformers_json = '[{"bioguide_id":"A000001","fec_id":"","reforms":[3,4]}]';
+
+        $this->assertEqual(
+            $reformers_json,
+            $reformers->to('json', array('indexed' => false))
+        );
+
     }
 
 }

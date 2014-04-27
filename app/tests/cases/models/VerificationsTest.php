@@ -46,15 +46,6 @@ class VerificationsTest extends \lithium\test\Unit {
         $errors = $verification->errors();
         $this->assertTrue(!empty($errors));
 
-        $data = array(
-            'pledger_id' => '1',
-            'is_verified' => ''
-        );
-        $verification = Verifications::create($data);
-
-        $this->assertFalse($verification->validates());
-        $this->assertFalse($verification->save());
-
         $errors = $verification->errors();
         $this->assertTrue(!empty($errors));
 

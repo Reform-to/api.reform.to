@@ -9,10 +9,7 @@ class Verifications extends \lithium\data\Model {
 	public $validates = array(
 		'pledger_id' => array(
             array('notEmpty', 'message' => 'pledger id is empty'),
-        ),
-		'is_verified' => array(
-            array('notEmpty', 'message' => 'verified is empty'),
-        ),
+        )
 	);
 
 	protected $_schema  = array(

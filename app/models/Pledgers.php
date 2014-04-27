@@ -31,6 +31,15 @@ class Pledgers extends \lithium\data\Model {
 		'date_created'         => array('type' => 'datetime', 'null' => false),
 		'date_modified'        => array('type' => 'datetime', 'null' => false)
 	);
+
+    public function full_name($entity) {
+        return implode(array_filter(array(
+            $entity->first_name,
+            $entity->middle_name,
+            $entity->last_name,
+            $entity->suffix
+        )), ' ');
+    }
 }
 
 /**
