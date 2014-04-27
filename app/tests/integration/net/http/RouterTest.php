@@ -41,6 +41,17 @@ class RouterTest extends \lithium\test\Unit {
 
     }
 
+    public function testReformersIndexRoute() {
+
+        $expected = array('controller' => 'Reformers', 'action' => 'index', 'args' => array());
+
+        $request = new Request(array('url' => '/reformers'));
+
+        $result = Router::process($request);
+        $this->assertEqual($expected, $result->params);
+
+    }
+
 }
 
 ?>

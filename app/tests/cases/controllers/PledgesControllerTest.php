@@ -41,7 +41,7 @@ class PledgesControllerTest extends \lithium\test\Unit {
 
 	public function testAdd() {
         $this->assertEqual(2, count(Pledgers::all()));
-        $this->assertEqual(1, count(Pledges::all()));
+        $this->assertEqual(3, count(Pledges::all()));
         $request = new Request();
         $request->data = array(
             'email' => 'new@example.com',
@@ -54,7 +54,7 @@ class PledgesControllerTest extends \lithium\test\Unit {
         $this->assertTrue(array_key_exists('pledge', $result));
         $this->assertEqual($request->data['email'], $result['pledge']['email']);
         $this->assertEqual(3, count(Pledgers::all()));
-        $this->assertEqual(3, count(Pledges::all()));
+        $this->assertEqual(5, count(Pledges::all()));
     }
 
 	public function testEdit() {}

@@ -2,23 +2,23 @@
 
 namespace app\models;
 
-class Pledges extends \lithium\data\Model {
+class Verifications extends \lithium\data\Model {
 
     public $belongsTo = array('Pledgers');
 
 	public $validates = array(
-		'reform_id' => array(
-			array('notEmpty', 'message' => 'reform id is empty'),
-    	),
 		'pledger_id' => array(
-			array('notEmpty', 'message' => 'pledger id is empty'),
-    	)
+            array('notEmpty', 'message' => 'pledger id is empty'),
+        ),
+		'is_verified' => array(
+            array('notEmpty', 'message' => 'verified is empty'),
+        ),
 	);
 
 	protected $_schema  = array(
 		'id'                   => array('type' => 'id'),
-		'reform_id'            => array('type' => 'integer', 'null' => false),
 		'pledger_id'           => array('type' => 'integer', 'null' => false),
+        'is_verified'          => array('type' => 'boolean', 'null' => false),
 		'date_created'         => array('type' => 'datetime', 'null' => false),
 		'date_modified'        => array('type' => 'datetime', 'null' => false)
 	);
@@ -28,7 +28,7 @@ class Pledges extends \lithium\data\Model {
  * Date Modified Filter
  */
 
-Pledges::applyFilter('save', function($self, $params, $chain) {
+Verifications::applyFilter('save', function($self, $params, $chain) {
         // Custom pre-dispatch logic goes here
         date_default_timezone_set('UTC');
 
@@ -43,4 +43,5 @@ Pledges::applyFilter('save', function($self, $params, $chain) {
 
         return $chain->next($self, $params, $chain);
 });
+
 ?>

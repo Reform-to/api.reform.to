@@ -4,6 +4,10 @@ namespace app\models;
 
 class Pledgers extends \lithium\data\Model {
 
+    public $hasOne = array('Verifications');
+
+    public $hasMany = array('Pledges');
+
 	public $validates = array(
 		'email' => array(
 			array('notEmpty', 'message' => 'email is empty'),
