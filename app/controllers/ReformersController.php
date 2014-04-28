@@ -28,12 +28,6 @@ class ReformersController extends \lithium\action\Controller {
                 return (int) $pledge->reform_id;
             });
 
-            $pledges = $pledger->pledges;
-            $reforms = array();
-            foreach ($pledges as $pledge) {
-                array_push($reforms, $pledge->reform_id);
-            }
-
             $reformer = array(
                 'bioguide_id' => $pledger->bioguide_id,
                 'fec_id' => $pledger->fec_id,

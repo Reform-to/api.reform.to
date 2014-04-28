@@ -55,7 +55,7 @@ class ReformersControllerTest extends \lithium\test\Unit {
 
         $this->assertEqual(
             $reformers_json,
-            $reformers->to('json', array('indexed' => false))
+            $reformers->to('json')
         );
 
     }

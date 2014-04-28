@@ -57,4 +57,35 @@ Collection::formats('lithium\net\http\Media');
 // 	return $chain->next($self, $params, $chain);
 // });
 
+/**
+ * Create a custom handler for the JSON media type. By default `Collection::to()` will force
+ * indexed conversion of the collection with the document ID's as keys. This is not what we want
+ * for our JSON API. The handler will yield a plain old JSON array for the collection instead
+ * of an object by setting cast to false and then devising a custom cast function in the
+ * encoding step.
+ */
+
+use lithium\net\http\Media;
+
+Media::type('json', 'application/json', array(
+    'cast' => false,
+    'encode' => function($data) {
+        $cast = function($d) {
+            if (!is_object($d)) {
+                return $d;
+            }
+            $options = array('indexed' => false);
+            return method_exists($d, 'to') ? $d->to('array', $options) : get_object_vars($d);
+        };
+
+        $data = is_object($data) ? $cast($data) : $data;
+        $data = is_array($data) ? array_map($cast, $data) : $d;
+
+        return json_encode($data);
+    },
+    'decode' => function($data) {
+        return json_decode($data, true);
+    }
+));
+
 ?>
