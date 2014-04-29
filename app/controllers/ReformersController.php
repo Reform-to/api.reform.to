@@ -31,6 +31,11 @@ class ReformersController extends \lithium\action\Controller {
             $reformer = array(
                 'bioguide_id' => $pledger->bioguide_id,
                 'fec_id' => $pledger->fec_id,
+                'first_name' => $pledger->first_name,
+                'middle_name' => $pledger->middle_name,
+                'last_name' => $pledger->last_name,
+                'suffix' => $pledger->suffix,
+                'state' => $pledger->state,
                 'reforms' => $reforms
             );
 

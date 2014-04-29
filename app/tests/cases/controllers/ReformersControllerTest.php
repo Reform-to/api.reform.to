@@ -51,7 +51,7 @@ class ReformersControllerTest extends \lithium\test\Unit {
 
         $this->assertEqual(2, sizeof($reformer['reforms']));
 
-        $reformers_json = '[{"bioguide_id":"A000001","fec_id":"","reforms":[3,4]}]';
+        $reformers_json = '[{"bioguide_id":"A000001","fec_id":"","first_name":"First","middle_name":"M.","last_name":"Last","suffix":"","state":"MA","reforms":[3,4]}]';
 
         $this->assertEqual(
             $reformers_json,
