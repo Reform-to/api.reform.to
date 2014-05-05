@@ -49,7 +49,7 @@ class PledgesControllerTest extends \lithium\test\Unit {
         );
         $controller = new PledgesController(array('request' => $request));
 
-        $result = $controller->add();
+        $result = $controller->index();
 
         $this->assertTrue(array_key_exists('pledge', $result));
         $this->assertEqual($request->data['email'], $result['pledge']['email']);

@@ -16,15 +16,12 @@ class PledgesController extends \lithium\action\Controller {
 
     public function index() {
         $pledges = array();
-        return compact('pledges');
-    }
 
-	public function add() {
-		$pledger = Pledgers::create();
-
+        // Post is Create
 		if ($this->request->data) {
 			Logger::info(serialize($this->request->data));
 
+		    $pledger = Pledgers::create();
 			if ($pledger->save($this->request->data)) {
 
                 if (isset($this->request->data['reforms'])) {
@@ -38,13 +35,12 @@ class PledgesController extends \lithium\action\Controller {
                     }
                 }
 			}
-
+            $pledge = $this->request->data;
+		    return compact('pledge');
 		}
 
-        $pledge = $this->request->data;
-
-		return compact('pledge');
-	}
+        return compact('pledges');
+    }
 
 }
 

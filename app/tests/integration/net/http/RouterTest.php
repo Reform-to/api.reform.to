@@ -32,7 +32,7 @@ class RouterTest extends \lithium\test\Unit {
 
     public function testPledgesAddRoute() {
 
-        $expected = array('controller' => 'Pledges', 'action' => 'add', 'args' => array());
+        $expected = array('controller' => 'Pledges', 'action' => 'index');
 
         $request = new Request(array('url' => '/pledges/add'));
 

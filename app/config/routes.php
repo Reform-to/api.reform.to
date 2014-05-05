@@ -92,6 +92,10 @@ if (!Environment::is('production')) {
  * In almost all cases, custom routes should be added above this one, since route-matching works in
  * a top-down fashion.
  */
+
+// Direct requests to pledges/add to the index for POST processing
+Router::connect('/pledges/add', array('Pledges::index'));
+
 Router::connect('/{:controller}/{:action}/{:args}.{:type}');
 Router::connect('/{:controller}/{:action}/{:args}');
 
