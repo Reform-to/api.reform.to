@@ -36,6 +36,7 @@ class PledgesController extends \lithium\action\Controller {
                 }
 			}
             $pledge = $this->request->data;
+            $this->_render['template'] = 'add';
 		    return compact('pledge');
 		}
 
