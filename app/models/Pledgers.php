@@ -8,12 +8,7 @@ class Pledgers extends \lithium\data\Model {
 
     public $hasMany = array('Pledges');
 
-	public $validates = array(
-		'email' => array(
-			array('notEmpty', 'message' => 'email is empty'),
-			array('email', 'message' => 'email is not valid')
-    	)
-	);
+	public $validates = array();
 
 	protected $_schema = array(
 		'id'                   => array('type' => 'id'),

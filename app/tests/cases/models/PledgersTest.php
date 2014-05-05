@@ -36,22 +36,6 @@ class PledgersTest extends \lithium\test\Unit {
         $this->assertTrue($pledger->save());
     }
 
-    public function testValidation() {
-        $data = array(
-            'email' => '',
-            'first' => 'First',
-            'last' => 'Last'
-        );
-        $pledger = Pledgers::create($data);
-
-        $this->assertFalse($pledger->validates());
-        $this->assertFalse($pledger->save());
-
-        $errors = $pledger->errors();
-        $this->assertTrue(!empty($errors));
-    }
-
-
 }
 
 ?>
