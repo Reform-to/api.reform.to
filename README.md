@@ -38,7 +38,7 @@ Create the database:
 
 Rename the connections-sample.php file to connections.php:
 
-  cp app/config/bootstrap/connections-sample.php app/config/bootstrap/connections.php
+    cp app/config/bootstrap/connections-sample.php app/config/bootstrap/connections.php
 
 Edit your new connections.php file, and fill in the access details for your databases.
 
