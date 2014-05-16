@@ -1,6 +1,6 @@
-# Reform to Lithium
+# Reform.to API
 
-Basic Lithium App to store pledges from Reform.to.
+Backend site and API for Reform.to website.
 
 ## Installation
 
@@ -26,10 +26,6 @@ Then edit your `~/.bash_profile` file:
     PATH=$PATH:/usr/local/lib/lithium/console
 
 ## Setup
-
-Make the resources folder writeable:
-
-    chmod -R 0777 app/resources
 
 Create a new database user:
 
@@ -64,3 +60,8 @@ Install SQLite:
     sudo apt-get install sqlite3 libsqlite3-dev
     sudo apt-get install php5-sqlite
     sudo service apache2 restart
+
+Any `li3` commands are run in the production environment by default. To use the
+development environment, first run the command:
+
+    export LITHIUM_ENVIRONMENT="development"
