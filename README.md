@@ -6,14 +6,14 @@ Basic Lithium App to store pledges from Reform.to.
 
 Grab the code:
 
-    git clone git@git.fabricatorz.com:reform-to-lithium
+    git clone https://github.com/Reform-to/api.reform.to.git
     git submodule init
     git submodule update
 
 Lithium comes with an `li3` console command that we have to make available. Add
 something like the follwoing to your `~/.bash_profile` file:
 
-    PATH=$PATH:/path/to/reform-to-lithium/libraries/lithium/console
+    PATH=$PATH:/path/to/api.reform.to/libraries/lithium/console
 
 Alternatively, install Lithium as a local library:
 
