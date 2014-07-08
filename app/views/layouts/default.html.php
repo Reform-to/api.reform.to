@@ -15,6 +15,7 @@
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
+    <?php echo $this->html->link('Reformers Feed', '/reformers/index.rss', array('type' => 'rss')); ?>
 	<link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:800|Open+Sans:300' rel='stylesheet' type='text/css'>
 </head>
 
@@ -22,6 +23,9 @@
 	<div class="container-narrow">
 
 		<div class="masthead">
+        <a href="http://reform.to"><strong>Reform.to</strong></a>
+        &middot;
+        <a href="/reformers">Reformers</a>
 		</div>
 
 		<hr>

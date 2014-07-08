@@ -20,27 +20,34 @@ class ReformersController extends \lithium\action\Controller {
             ),
             'conditions' => array(
                 'Verifications.is_verified' => true
+            ),
+            'order' => array(
+                'Verifications.date_modified' => 'DESC'
             )
         ));
 
-        $reformers = $pledgers->map(function($pledger) {
-            $reforms = $pledger->pledges->map(function($pledge) {
-                return (int) $pledge->reform_id;
+        if ($this->request->is('rss')) {
+            $reformers = $pledgers;
+        } else {
+            $reformers = $pledgers->map(function($pledger) {
+                $reforms = $pledger->pledges->map(function($pledge) {
+                    return (int) $pledge->reform_id;
+                });
+
+                $reformer = array(
+                    'bioguide_id' => $pledger->bioguide_id,
+                    'fec_id' => $pledger->fec_id,
+                    'first_name' => $pledger->first_name,
+                    'middle_name' => $pledger->middle_name,
+                    'last_name' => $pledger->last_name,
+                    'suffix' => $pledger->suffix,
+                    'state' => $pledger->state,
+                    'reforms' => $reforms
+                );
+
+                return $reformer;
             });
-
-            $reformer = array(
-                'bioguide_id' => $pledger->bioguide_id,
-                'fec_id' => $pledger->fec_id,
-                'first_name' => $pledger->first_name,
-                'middle_name' => $pledger->middle_name,
-                'last_name' => $pledger->last_name,
-                'suffix' => $pledger->suffix,
-                'state' => $pledger->state,
-                'reforms' => $reforms
-            );
-
-            return $reformer;
-        });
+        }
 
         return compact('reformers');
     }

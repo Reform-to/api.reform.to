@@ -88,4 +88,6 @@ Media::type('json', 'application/json', array(
     }
 ));
 
+Media::type('rss', 'application/rss+xml');
+
 ?>
