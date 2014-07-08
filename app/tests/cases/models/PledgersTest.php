@@ -36,6 +36,30 @@ class PledgersTest extends \lithium\test\Unit {
         $this->assertTrue($pledger->save());
     }
 
+    public function testFullName() {
+        $pledger = Pledgers::first();
+        $this->assertEqual('First M. Last', $pledger->full_name());
+    }
+
+    public function testUrl() {
+        $bio = Pledgers::find('first', array(
+            'conditions' => array(
+                'bioguide_id' => 'A000001'
+            )
+        ));
+
+        $this->assertEqual('http://reform.to/#/legislators/A000001', $bio->url());
+
+        $fec = Pledgers::find('first', array(
+            'conditions' => array(
+                'fec_id' => 'S4XX00001'
+            )
+        ));
+
+        $this->assertEqual('http://reform.to/#/candidates/S4XX00001', $fec->url());
+
+    }
+
 }
 
 ?>

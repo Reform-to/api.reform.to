@@ -35,6 +35,14 @@ class Pledgers extends \lithium\data\Model {
             $entity->suffix
         )), ' ');
     }
+
+    public function url($entity) {
+        if ($entity->bioguide_id) {
+            return 'http://reform.to/#/legislators/' . $entity->bioguide_id;
+        } elseif ($entity->fec_id) {
+            return 'http://reform.to/#/candidates/' . $entity->fec_id;
+        }
+    }
 }
 
 /**
