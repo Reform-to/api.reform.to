@@ -26,7 +26,7 @@ class ReformersController extends \lithium\action\Controller {
             )
         ));
 
-        if ($this->request->is('rss')) {
+        if ($this->request->is('rss') || $this->request->accepts() === 'rss') {
             $reformers = $pledgers;
         } else {
             $reformers = $pledgers->map(function($pledger) {
