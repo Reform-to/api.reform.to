@@ -1,8 +1,17 @@
-<?php foreach($reformers as $reformer): ?>
-    <?php $pubDate = new DateTime($reformer->verification->date_modified); ?>
+<?php foreach($reformers as $reformer):
+    $pubDate = new DateTime($reformer->verification->date_modified);
+    $from_state = $reformer->state ? "from $reformer->state" : '';
+    $description = implode(array_filter(array(
+        $reformer->title(),
+        $reformer->full_name(),
+        $from_state,
+        'has pledged support for fundamental reform.'
+    )), " ");
+?>
+
     <item>
         <title><?=$reformer->full_name(); ?></title>
-         <description><?=$reformer->full_name(); ?> has pledged support for fundamental reform.</description>
+         <description><?=$description; ?></description>
          <link><?=$reformer->url(); ?></link>
          <pubDate><?=$pubDate->format(DateTime::RSS); ?></pubDate>
          <guid isPermaLink="true"><?=$reformer->url(); ?></guid>

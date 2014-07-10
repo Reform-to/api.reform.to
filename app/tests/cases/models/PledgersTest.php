@@ -41,6 +41,32 @@ class PledgersTest extends \lithium\test\Unit {
         $this->assertEqual('First M. Last', $pledger->full_name());
     }
 
+    public function testTitle() {
+        $a = Pledgers::create(array(
+            'role' => 'congress',
+            'chamber' => 'house'
+        ));
+        $this->assertEqual('Representative', $a->title());
+
+        $b = Pledgers::create(array(
+            'role' => 'congress',
+            'chamber' => 'senate'
+        ));
+        $this->assertEqual('Senator', $b->title());
+
+        $c = Pledgers::create(array(
+            'role' => 'candidate',
+            'chamber' => 'house'
+        ));
+        $this->assertEqual('House candidate', $c->title());
+
+        $d = Pledgers::create(array(
+            'role' => 'candidate',
+            'chamber' => 'senate'
+        ));
+        $this->assertEqual('Senate candidate', $d->title());
+    }
+
     public function testUrl() {
         $bio = Pledgers::find('first', array(
             'conditions' => array(

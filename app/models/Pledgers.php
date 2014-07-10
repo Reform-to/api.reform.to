@@ -36,6 +36,26 @@ class Pledgers extends \lithium\data\Model {
         )), ' ');
     }
 
+    public function title($entity) {
+        if ($entity->role == 'congress') {
+            if ($entity->chamber == 'house') {
+                return 'Representative';
+            }
+            if ($entity->chamber == 'senate') {
+                return 'Senator';
+            }
+        }
+
+        if ($entity->role == 'candidate') {
+            if ($entity->chamber == 'house') {
+                return 'House candidate';
+            }
+            if ($entity->chamber == 'senate') {
+                return 'Senate candidate';
+            }
+        }
+    }
+
     public function url($entity) {
         if ($entity->bioguide_id) {
             return 'http://reform.to/#/legislators/' . $entity->bioguide_id;
