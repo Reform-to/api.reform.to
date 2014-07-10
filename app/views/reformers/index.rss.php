@@ -1,11 +1,14 @@
 <?php foreach($reformers as $reformer):
     $pubDate = new DateTime($reformer->verification->date_modified);
     $from_state = $reformer->state ? "from $reformer->state" : '';
+    $pledge_count = $reformer->pledges->count();
     $description = implode(array_filter(array(
         $reformer->title(),
         $reformer->full_name(),
         $from_state,
-        'has pledged support for fundamental reform.'
+        'has pledged support for',
+        $pledge_count,
+        $pledge_count == 1 ? 'reform.' : 'reforms.'
     )), " ");
 ?>
 
