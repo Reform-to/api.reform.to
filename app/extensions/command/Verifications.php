@@ -24,7 +24,10 @@ class Verifications extends \lithium\console\Command {
             )
         ));
 
-        $this->out("ID  | FEC/Bioguide ID | Email | Name | Role | Chamber | State | Status | Date | Pledges\n");
+        $info = array(
+            array(" ID", "FEC/Bio ID", "Email", "Name", "Role", "Chamber", "State", "Status", "Pledges"),
+            array(" --", "----------", "-----", "----", "----", "-------", "-----", "------", "-------")
+        );
 
         foreach ($pledgers as $p) {
             $reforms = array();
@@ -32,7 +35,7 @@ class Verifications extends \lithium\console\Command {
                 array_push($reforms, $pledge->reform_id);
             }
 
-            $info = array(
+            $info[] = array(
                 str_pad($p->id, 3, " ", STR_PAD_LEFT),
                 implode(array_filter(array($p->bioguide_id, $p->fec_id))),
                 $p->email,
@@ -41,11 +44,11 @@ class Verifications extends \lithium\console\Command {
                 $p->chamber,
                 $p->state,
                 $p->verification->is_verified ? 'Verified' : 'Unverified',
-                $p->date_created,
+                //$p->date_created,
                 implode($reforms, ', ')
             );
-            $this->out(implode($info, " | "));
         }
+        $this->columns($info);
     }
 
 
