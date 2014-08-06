@@ -40,7 +40,7 @@ Rename the connections-sample.php file to connections.php:
 
     cp app/config/bootstrap/connections-sample.php app/config/bootstrap/connections.php
 
-Edit your new connections.php file, and fill in the access details for your databases.
+Edit your new connections.php file, and fill in the access details for your databases and email account.
 
 Run the migrations:
 

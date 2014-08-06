@@ -119,5 +119,7 @@ Libraries::add('app', array('default' => true));
 // Libraries::add('li3_docs');
 Libraries::add('li3_fixtures');
 Libraries::add('li3_migrations');
+Libraries::add('li3_mailer');
+Libraries::add('swiftmailer', array('prefix' => 'Swift_', 'bootstrap' => 'lib/swift_required.php'));
 
 ?>

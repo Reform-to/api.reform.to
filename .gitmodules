@@ -7,3 +7,9 @@
 [submodule "libraries/li3_migrations"]
 	path = libraries/li3_migrations
 	url = https://github.com/djordje/li3_migrations.git
+[submodule "libraries/li3_mailer"]
+	path = libraries/li3_mailer
+	url = https://github.com/eLod/li3_mailer
+[submodule "libraries/swiftmailer"]
+	path = libraries/swiftmailer
+	url = https://github.com/swiftmailer/swiftmailer.git

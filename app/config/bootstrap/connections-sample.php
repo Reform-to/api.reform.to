@@ -85,4 +85,22 @@ Connections::add('default', array(
     )
  ));
 
+/**
+ * Mailer configuration.
+ */
+
+use li3_mailer\net\mail\Delivery;
+
+Delivery::config(array('default' => array(
+    'adapter' => 'Swift',
+    'transport' => 'smtp',
+    'from' => array('domain.com' => 'contact@domain.com'),
+    'cc' => array('other@domain.com'),
+    'username' => 'contact@domain.com',
+    'password' => 'googleuserpassword',
+    'host' => 'smtp.gmail.com',
+    'port' => 465,
+    'encryption' => 'ssl'
+)));
+
 ?>
