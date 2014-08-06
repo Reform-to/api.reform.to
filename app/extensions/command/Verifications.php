@@ -77,7 +77,7 @@ class Verifications extends \lithium\console\Command {
             if ($p->role === 'candidate') {
                 $role = "candidate for";
             } else if ($p->role === 'congress') {
-                $chamber = "member of";
+                $role = "member of";
             }
 
             $full_name = $p->full_name();
