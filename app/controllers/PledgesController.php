@@ -42,8 +42,15 @@ class PledgesController extends \lithium\action\Controller {
             $reforms_json = file_get_contents("http://reforms.reform.to/us/b5/", "r");
             $reforms = json_decode($reforms_json);
 
-            $email = $pledge['email'] ?: 'info@reform.to';
-            $success = Mailer::deliver('pledges', ['to' => $email,  'subject' => 'Verify Your Reform.to Pledge', 'data' => compact('pledger', 'pledges', 'reforms')]);
+            // Only send an email if enough data was submitted
+            $p = $pledger;
+            if ($p->email && $p->full_name() && $p->title() && $p->state) {
+                $success = Mailer::deliver('pledges', ['to' => $p->email,  'subject' => 'Verify Your Reform.to Pledge', 'data' => compact('pledger', 'pledges', 'reforms')]);
+            } else {
+                // Otherwise send the info to the main account
+                $success = Mailer::deliver('errors', ['to' => 'info@reform.to', 'cc' => '', 'subject' => 'Reform.to Pledge Notice', 'data' => compact('pledger', 'pledges', 'reforms')]);
+
+            }
 
             $this->_render['template'] = 'add';
 		    return compact('pledge');
