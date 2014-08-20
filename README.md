@@ -46,6 +46,26 @@ Run the migrations:
 
     li3 migrate up
 
+## Commands
+
+From the repository root, you can use the `Verifications` command to check and verify pledges.
+
+Show all pledgs:
+
+    li3 verifications show
+
+Verify a pledge using its ID:
+
+    li3 verifications verify --id=1
+
+Remove verification from a pledge:
+
+    li3 verifications unverify --id=1
+
+Check the verification letter that was sent:
+
+    li3 verifications letter --id=1
+
 ## Testing
 
 In order to do development and run the tests you must also set up a development
